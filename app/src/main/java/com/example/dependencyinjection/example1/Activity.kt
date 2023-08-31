@@ -1,12 +1,13 @@
 package com.example.dependencyinjectionstart.example1
 
+import com.example.dependencyinjection.example1.Component
+
 class Activity {
 
-    val monitor = Monitor()
-    val keyboard = Keyboard()
-    val computerTower = ComputerTower(Storage(), Memory(), Processor())
-    val mouse = Mouse()
+    lateinit var computer: Computer
+    lateinit var keyboard: Keyboard
 
-
-    val computer = Computer(monitor, computerTower, keyboard, mouse)
+    init {
+        Component().inject(this)
+    }
 }
